@@ -87,6 +87,7 @@ export async function loginUser(email: string) {
       data: {
         email,
         name: email.split('@')[0],
+        password: '',
       }
     });
   }
