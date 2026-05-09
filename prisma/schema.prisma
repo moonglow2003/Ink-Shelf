@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String            @id @default(cuid())
+  email     String            @unique
+  name      String
+  password  String
+  progress  ReadingProgress[]
+  createdAt DateTime          @default(now())
+}
+
+model Book {
+  id          String            @id @default(cuid())
+  title       String
+  author      String
+  description String
+  coverImage  String
+  genres      String // comma separated
+  chapters    Chapter[]
+  progress    ReadingProgress[]
+  isTrending  Boolean           @default(false)
+  isStaffPick Boolean           @default(false)
+  price       Float             @default(0.0)
+  rating      Float             @default(0.0)
+  reviewCount Int               @default(0)
+  createdAt   DateTime          @default(now())
+}
+
+model Chapter {
+  id        String   @id @default(cuid())
+  bookId    String
+  book      Book     @relation(fields: [bookId], references: [id])
+  chapterNo Int
+  title     String
+  content   String?
+  createdAt DateTime @default(now())
+}
+
+model ReadingProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  bookId    String
+  book      Book     @relation(fields: [bookId], references: [id])
+  chapterNo Int      @default(0) // the chapter currently reading or read up to
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, bookId])
+}
