@@ -79,10 +79,7 @@ export default function SplashScreen() {
           </div>
         </div>
         
-        {/* Edition Tag */}
-        <div className="mt-12 bg-black px-4 py-1">
-          <span className="text-[10px] text-white font-bold tracking-widest uppercase">Premium Collector's App v1.0</span>
-        </div>
+
       </footer>
 
       {/* Decorative Elements */}
