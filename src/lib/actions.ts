@@ -5,9 +5,9 @@ import { cookies } from 'next/headers';
 
 // Utility to get current user ID (mocked)
 export async function getCurrentUserId() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userIdCookie = cookieStore.get('userId');
-  
+
   if (userIdCookie?.value) {
     return userIdCookie.value;
   }
@@ -16,7 +16,7 @@ export async function getCurrentUserId() {
   const defaultUser = await prisma.user.findFirst({
     where: { email: 'reader@inkshelf.com' }
   });
-  
+
   return defaultUser?.id || null;
 }
 
@@ -59,9 +59,9 @@ export async function getAllBooks(query?: string) {
   const books = await prisma.book.findMany();
   if (query) {
     const lowerQuery = query.toLowerCase();
-    return books.filter(b => 
-      b.title.toLowerCase().includes(lowerQuery) || 
-      b.author.toLowerCase().includes(lowerQuery) || 
+    return books.filter(b =>
+      b.title.toLowerCase().includes(lowerQuery) ||
+      b.author.toLowerCase().includes(lowerQuery) ||
       b.genres.toLowerCase().includes(lowerQuery)
     );
   }
@@ -92,7 +92,7 @@ export async function loginUser(email: string) {
     });
   }
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   cookieStore.set('userId', user.id, { httpOnly: true, path: '/' });
   return { success: true };
 }

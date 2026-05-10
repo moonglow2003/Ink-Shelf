@@ -7,7 +7,7 @@ import AddToCartButton from '@/components/AddToCartButton';
 
 export default async function BookDetails({ params }: { params: { id: string } }) {
   const book = await getBookById(params.id);
-  
+
   if (!book) {
     return notFound();
   }
@@ -32,7 +32,7 @@ export default async function BookDetails({ params }: { params: { id: string } }
             <div className="absolute inset-0 bg-primary translate-x-3 translate-y-3"></div>
             <div className="relative bg-surface border-2 border-primary p-md z-10 hover:-translate-y-1 hover:-translate-x-1 transition-transform duration-300">
               <div className="border border-primary bg-surface-variant aspect-[2/3] overflow-hidden relative">
-                <img alt="Manga Cover Art" className="w-full h-full object-cover mix-blend-multiply" src={book.coverImage}/>
+                <img alt="Manga Cover Art" className="w-full h-full object-cover mix-blend-multiply" src={book.coverImage} />
               </div>
             </div>
           </div>
@@ -106,9 +106,9 @@ export default async function BookDetails({ params }: { params: { id: string } }
           <h3 className="font-headline-lg text-headline-lg uppercase border-b-2 border-primary pb-sm inline-block w-max">More Like This</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-gutter">
             {relatedBooks.map((relatedBook) => (
-              <Link href={`/book/\${relatedBook.id}`} key={relatedBook.id} className="bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-sm flex flex-col gap-sm hover:-translate-y-2 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer group">
+              <Link href={`/book/${relatedBook.id}`} key={relatedBook.id} className="bg-surface border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-sm flex flex-col gap-sm hover:-translate-y-2 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer group">
                 <div className="w-full aspect-[2/3] border border-primary overflow-hidden relative bg-surface-variant p-2">
-                  <img alt="Book Cover" className="w-full h-full object-cover grayscale contrast-150 group-hover:scale-105 transition-transform duration-500" src={relatedBook.coverImage}/>
+                  <img alt="Book Cover" className="w-full h-full object-cover grayscale contrast-150 group-hover:scale-105 transition-transform duration-500" src={relatedBook.coverImage} />
                 </div>
                 <div className="flex flex-col gap-xs mt-2">
                   <h4 className="font-label-md text-label-md uppercase truncate text-primary">{relatedBook.title}</h4>
