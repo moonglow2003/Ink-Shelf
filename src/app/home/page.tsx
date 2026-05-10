@@ -48,36 +48,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Continue Reading */}
-        {progress.length > 0 && (
-          <section className="mb-xl">
-            <div className="flex justify-between items-end mb-lg border-b-2 border-primary pb-sm">
-              <h2 className="font-headline-md text-headline-md text-primary">Continue Reading</h2>
-              <a className="font-label-md text-label-md text-secondary hover:text-primary underline decoration-2 underline-offset-4" href="#">View All</a>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-gutter">
-              {progress.map((prog, index) => (
-                <Link href={`/book/${prog.book.id}`} key={prog.id} className={`flex flex-col group cursor-pointer ${index > 1 ? 'hidden md:flex' : ''}`}>
-                  <div className="relative comic-border bg-surface p-sm halftone-shadow group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-hover:shadow-none transition-all mb-sm aspect-[2/3] rounded-DEFAULT">
-                    {index === 0 && (
-                      <div className="absolute top-sm right-sm bg-surface comic-border px-xs py-1 z-10 rounded-DEFAULT">
-                        <span className="font-label-md text-[10px] uppercase font-bold">Recent</span>
-                      </div>
-                    )}
-                    <div className="w-full h-full border border-primary relative overflow-hidden bg-surface-container">
-                      <img alt="Book Cover" className="object-cover w-full h-full grayscale" src={prog.book.coverImage}/>
-                    </div>
-                  </div>
-                  <h3 className="font-label-md text-label-md text-primary truncate">{prog.book.title}</h3>
-                  <p className="font-body-md text-[14px] text-secondary truncate">Ch. {prog.chapterNo}</p>
-                  <div className="w-full bg-surface-variant h-[4px] mt-xs rounded-full overflow-hidden">
-                    <div className="bg-primary h-full" style={{ width: `${(prog.chapterNo / 10) * 100}%` }}></div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
+
 
         {/* Divider */}
         <div className="w-full h-[2px] bg-surface-variant halftone-bg mb-xl opacity-50"></div>
