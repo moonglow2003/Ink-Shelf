@@ -29,7 +29,7 @@ export async function POST(request: Request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'llama3-8b-8192',
+        model: 'llama-3.1-8b-instant',
         messages: apiMessages,
         temperature: 0.7,
         max_tokens: 1024,
@@ -39,14 +39,19 @@ export async function POST(request: Request) {
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
       console.error('Groq API Error:', errorData || response.statusText);
-      return NextResponse.json({ error: 'Failed to communicate with AI provider' }, { status: 500 });
+      return NextResponse.json({ error: errorData?.error?.message || 'Failed to communicate with AI provider' }, { status: response.status });
     }
 
     const data = await response.json();
+    if (!data.choices || !data.choices[0]) {
+      console.error('Invalid Groq response:', data);
+      return NextResponse.json({ error: 'Invalid response format from Groq' }, { status: 500 });
+    }
+
     return NextResponse.json({ result: data.choices[0].message.content });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Chat API Error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
   }
 }
