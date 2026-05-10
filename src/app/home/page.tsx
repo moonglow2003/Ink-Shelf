@@ -22,7 +22,7 @@ export default async function Home() {
           <div className="comic-border p-lg bg-surface halftone-shadow-lg rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-lg">
             <div>
               <h1 className="font-display-lg text-display-lg text-primary mb-xs">Welcome back, Reader.</h1>
-              <p className="font-body-lg text-body-lg text-secondary">Your ink is waiting. You have {progress.length} books in progress.</p>
+              <p className="font-body-lg text-body-lg text-secondary">Comics, manga, and pages you won’t forget.</p>
             </div>
             <div className="flex gap-sm">
               <button className="comic-border px-md py-sm bg-primary text-on-primary font-label-md text-label-md uppercase halftone-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 rounded-DEFAULT">

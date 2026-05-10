@@ -86,10 +86,7 @@ export default function SplashScreen() {
       {/* Bottom-left dynamic block */}
       <div className="fixed bottom-[-40px] left-[-40px] w-48 h-48 bg-black transform rotate-45 z-[5] border-8 border-white/20"></div>
       
-      {/* Top-right dynamic accent */}
-      <div className="fixed top-12 right-[-20px] w-64 h-12 bg-white transform -rotate-12 z-[5] border-y-4 border-black flex items-center justify-center">
-        <span className="text-black font-bold tracking-[0.5em] text-xs">ARCHIVE ACCESS</span>
-      </div>
+
     </main>
   );
 }

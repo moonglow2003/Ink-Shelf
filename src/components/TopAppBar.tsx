@@ -1,6 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useCartStore } from '@/store/cart';
 
 export default function TopAppBar() {
+  const cartItemsCount = useCartStore((state) => state.items.length);
+
   return (
     <header className="bg-surface-container-lowest w-full top-0 sticky border-b-4 border-primary shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] z-40">
       <div className="flex justify-between items-center px-sm md:px-gutter py-sm w-full max-w-full">
@@ -30,7 +35,11 @@ export default function TopAppBar() {
           </Link>
           <Link href="/checkout" aria-label="Cart" className="text-primary cursor-pointer active:scale-95 transition-all w-10 h-10 flex items-center justify-center border-2 border-transparent hover:border-primary hover:bg-surface-variant relative">
             <span className="material-symbols-outlined font-headline-lg text-headline-lg">shopping_cart</span>
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-on-primary text-[10px] font-bold flex items-center justify-center rounded-full border border-surface-container-lowest">2</span>
+            {cartItemsCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary text-on-primary text-[10px] font-bold flex items-center justify-center rounded-full border border-surface-container-lowest">
+                {cartItemsCount}
+              </span>
+            )}
           </Link>
         </div>
       </div>
