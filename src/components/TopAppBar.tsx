@@ -16,7 +16,7 @@ export default function TopAppBar() {
 
         {/* Brand Logo */}
         <div className="flex-1 md:flex-none flex justify-center md:justify-start">
-          <Link href="/" className="font-headline-lg text-headline-lg font-extrabold tracking-tighter text-primary uppercase bg-primary text-on-primary px-2 py-1 transform -skew-x-6 inline-block shadow-[4px_4px_0px_0px_rgba(200,200,200,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(200,200,200,1)] transition-all">
+          <Link href="/" className="font-headline-lg text-headline-lg font-extrabold tracking-tighter uppercase bg-primary text-on-primary px-2 py-1 transform -skew-x-6 inline-block shadow-[4px_4px_0px_0px_rgba(200,200,200,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(200,200,200,1)] transition-all">
             INKSHELF
           </Link>
         </div>
