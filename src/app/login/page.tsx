@@ -29,7 +29,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center p-gutter">
       {/* Login/Signup Container */}
-      <main className="w-full max-w-4xl bg-surface comic-border comic-shadow flex flex-col md:flex-row h-[800px] md:h-[600px] overflow-hidden">
+      <main className="w-full max-w-4xl bg-surface comic-border comic-shadow flex flex-col md:flex-row min-h-[800px] md:min-h-[600px] h-auto overflow-hidden">
         {/* Illustration Side */}
         <section className="hidden md:flex md:w-1/2 bg-surface-variant relative p-lg flex-col justify-center items-center border-b-2 md:border-b-0 md:border-r-2 border-primary">
           {/* Halftone divider element */}
