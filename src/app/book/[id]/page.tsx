@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import TopAppBar from '@/components/TopAppBar';
 import BottomNavBar from '@/components/BottomNavBar';
 import Link from 'next/link';
