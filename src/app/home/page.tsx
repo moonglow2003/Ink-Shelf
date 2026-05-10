@@ -3,7 +3,7 @@ import BottomNavBar from '@/components/BottomNavBar';
 import Link from 'next/link';
 import SearchBar from '@/components/SearchBar';
 import { getCurrentUserId, getStaffPicks, getTrendingBooks, getUserProgress } from '@/lib/actions';
-
+import Chatbot from '@/components/Chatbot';
 export default async function Home() {
   const userId = await getCurrentUserId();
   const progress = userId ? await getUserProgress(userId) : [];
@@ -91,10 +91,7 @@ export default async function Home() {
         </section>
       </main>
 
-      {/* Floating Action Button (AI Assistant) */}
-      <button className="fixed bottom-28 right-gutter md:bottom-gutter md:right-gutter w-14 h-14 bg-primary text-on-primary rounded-full comic-border halftone-shadow flex items-center justify-center hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:scale-95 z-50">
-        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>auto_awesome</span>
-      </button>
+      <Chatbot />
 
       <BottomNavBar />
     </>
